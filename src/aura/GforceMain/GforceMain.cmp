@@ -1,0 +1,34 @@
+<aura:component controller="GforceDemoController">
+
+  <aura:attribute name="numOfProducts" type="Integer" default="5"/>
+
+  <style>
+    .no-block {
+      display: inline-block;
+    }
+  </style>
+  <div class="slds-grid slds-p-around_medium">
+    <div class="slds-col">
+
+      <fieldset class="slds-box slds-container_small slds-align_absolute-center">
+        <div class="slds-form">
+
+          <aura:iteration items="1,2,3,4,5" var="num">
+            <div>
+              <lightning:input class="slds-p-bottom_small no-block"
+                label="{#'Product ' + num}" name="{#'product-' + num}"
+                onchange="{!c.productSelectHandler}" type="checkbox"/>
+              <span aura:id="product-amount" class="slds-text-title"
+                title="{#'product-' + num + '-amount'}"></span>
+            </div>
+            <lightning:input aura:id="product-quantity"
+              class="remove-label slds-p-bottom_small slds-hide" label="Quantity"
+              name="{#'product-' + num + '-quantity'}" placeholder="Quantity"
+              onchange="{!c.quantityEnteredHandler}" type="text"/>
+          </aura:iteration>
+        </div>
+      </fieldset>
+
+    </div>
+  </div>
+</aura:component>
